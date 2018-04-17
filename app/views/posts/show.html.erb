@@ -8,17 +8,6 @@
 
 <h2>User's Comments: </h2>
 
-<%= form_for @post do |f| %>
-  <%= f.collection_select :users, User.all, :id, :username %><br>
-  <%= f.fields_for :users, @post.users.build do |users_fields| %>
-    <%= users_fields.text_field :username %>
-  <% end %>
-
-
-
-  <%= f.submit %>
-<% end %>
-
 <ul>
   <% @post.comments.each do |comment| %>
     <li><%= comment.content %></li>
@@ -27,4 +16,18 @@
 
 <% @post.users.uniq.each do |user| %>
   <p><%= link_to user.username, user_path(user) %></p>
+<% end %>
+
+
+<%= form_for @post do |f| %>
+  <%= f.collection_select :users, User.all, :id, :username %><br>
+  <%= f.fields_for :users, @post.users.build do |users_fields| %>
+    <%= users_fields.text_field :username %>
+  <% end %>
+
+  <%= f.fields_for :comments, @post.comments.build do |comments_fields| %>
+    <%= comments_fields.text_area :content %>
+  <% end %>
+
+  <%= f.submit %>
 <% end %>
