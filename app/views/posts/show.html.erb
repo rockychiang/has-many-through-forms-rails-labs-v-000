@@ -13,3 +13,6 @@
   <% end %>
 </ul>
 
+<% @post.users.each do |user| %>
+  <%= user.username %>
+<% end %>
