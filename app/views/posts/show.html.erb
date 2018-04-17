@@ -9,7 +9,7 @@
 <h2>User's Comments: </h2>
 
 <%= form_for @post do |f| %>
-  <%= f.collection_select :user, User.all, :id, :username %><br>
+  <%= f.collection_select :users, User.all, :id, :username %><br>
 
 
   <%= f.submit %>
