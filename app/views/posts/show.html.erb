@@ -21,7 +21,7 @@
 
 <%= form_for @post.comments.build do |f| %>
   <%= f.collection_select :user, User.all, :id, :username %><br>
-  <%= f.fields_for :users, f.user.build do |user_fields| %>
+  <%= f.fields_for :users, User.build do |user_fields| %>
     <%= users_fields.text_field :username %><br>
   <% end %>
 
