@@ -5,5 +5,6 @@ class Comment < ActiveRecord::Base
 
   def reject_comment(attributes)
     attributes['username'].blank?
+  end
 
 end
