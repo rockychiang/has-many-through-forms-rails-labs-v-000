@@ -19,15 +19,13 @@
 <% end %>
 
 
-<%= form_for @post do |f| %>
+<%= form_for @post.comments.build do |f| %>
   <%= f.collection_select :users, User.all, :id, :username %><br>
   <%= f.fields_for :users, @post.users.build do |users_fields| %>
     <%= users_fields.text_field :username %><br>
   <% end %>
 
-  <%= f.fields_for :comments, @post.comments.build do |comments_fields| %>
-    <%= comments_fields.text_area :content %>
-  <% end %>
+  <%= f.text_area :content %>
 
   <%= f.submit %>
 <% end %>
