@@ -21,7 +21,7 @@
 
 <%= form_for @post.comments.build do |f| %>
   <%= f.collection_select :user_id, User.all, :id, :username, include_blank: 'Please Select' %> or
-  <%= f.fields_for :users, User.new do |user_fields| %>
+  <%= f.fields_for :users, User.new do |user_attributes| %>
     <%= user_fields.text_field :username %><br>
   <% end %>
 
